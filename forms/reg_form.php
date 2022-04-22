@@ -5,7 +5,7 @@
     <title>Regisztráció</title>
 </head>
 <body>
-    <form method="POST" action="reg.php">
+    <form method="POST" action="../php/reg.php">
         Felhasznalónév: 
         <input type="text" name="username" required pattern="[A-Z a-z 0-9]*"><br>
 

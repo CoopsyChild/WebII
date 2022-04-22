@@ -53,7 +53,7 @@
         echo "<span>Mivel üresek voltak a mezők semmilyen változatatás nem történt. </span><br>";
     }
     echo "<span>Négy másodperc múlva visszakerülsz a profilod oldalára </span><br>";
-    header('refresh:4;url=index.php?page=account');
+    header('refresh:4;url=../php/index.php?page=account');
 
 ?>
 <span></span>

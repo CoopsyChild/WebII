@@ -5,7 +5,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form method="post" action="login.php">
+    <form method="post" action="../php/login.php">
         Felhasznalónév: 
         <input type="text" name="username" required><br>
 
@@ -13,6 +13,6 @@
         <input type="password" name="password" required><br>
         <input type="submit" name="send" value="Bejelentkezés">
     </form>
-    <a href="reg_form.php">Regisztráció</a>
+    <a href="../forms/reg_form.php">Regisztráció</a>
 </body>
 </html>

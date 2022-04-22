@@ -23,7 +23,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
         }
         $mysqli->query('INSERT INTO users(username,password,email,firstname,lastname,authoritytypecode,profilepic) VALUES("'.$username.'","'.$password.'","'.$email.'","'.$firstName.'","'.$lastName.'","'.$authoritytype.'","'.$profilepic.'");');
         echo 'Sikeres regisztráció!<br>';
-        echo "<a href='login_form.php'>Vissza a bejelentkezéshez</a>";
+        echo "<a href='../forms/login_form.php'>Vissza a bejelentkezéshez</a>";
     }
     else{
         echo "Ez a felhasználónév már foglalt, bocsi :(";

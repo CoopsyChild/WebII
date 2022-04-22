@@ -1,6 +1,6 @@
 
 <form action="accountupdate.php" method="post">
-    <img src="profilepics/<?php echo $user['profilepic'] ?>" alt="Profilkép" width="200" height="200"><br>
+    <img src="../profilepics/<?php echo $user['profilepic'] ?>" alt="Profilkép" width="100" height="100"><br>
     <strong>Új profilkép feltöltése:</strong><br>
     <input type="file" name="newprofilepic" value="Új profilkép feltöltése"><br><br>
     <strong>Jelenlegi név: <?php echo $user['lastname']." ".$user['firstname']; ?></strong><br> 
@@ -21,5 +21,5 @@
     Új jelszó megint:
     <input type="password" name="newpasscheck"><br><br>
     <input type="submit" value="Új adatok feltöltése"> 
-    <a href="index.php?page=account">Vissza</a><br>
+    <a href="/php/index.php?page=account">Vissza</a><br>
 </form>

@@ -21,7 +21,7 @@
             include 'account.php';
             break;
         case 'accountupdate_form':
-            include 'accountupdate_form.php';
+            include '../forms/accountupdate_form.php';
             break;
     }
 ?>

@@ -24,7 +24,7 @@
 
     
     <?php
-        else: header('Location: login_form.php');
+        else: header('Location: php/login_form.php');
         endif;
     ?>
 </body>
