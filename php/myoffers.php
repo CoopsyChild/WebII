@@ -10,6 +10,8 @@ $offers = $result->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
+<a href="index.php?page=newoffer_form">Adatok módosítása</a><br>
+
 <?php foreach ($offers as $offer) : ?>
     <div class="content">
         <img src="../profilepics/<?php echo $offer['img'] ?>" alt="kép" width="150" height="100"><br>

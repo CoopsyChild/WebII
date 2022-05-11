@@ -23,6 +23,9 @@
         case 'account':
             include 'account.php';
             break;
+        case 'newoffer_form':
+            include '../forms/newoffer_form.php';
+            break;
         case 'accountupdate_form':
             include '../forms/accountupdate_form.php';
             break;
