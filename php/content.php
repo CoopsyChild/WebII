@@ -11,11 +11,14 @@
         case 'main':
             include 'mainpage.php';
             break;
-        case 'jobs':
-            include 'jobs.php';
+        case 'offers':
+            include 'offers.php';
             break;
-        case 'myjobs':
-            include 'myjobs.php';
+        case 'myoffers':
+            include 'myoffers.php';
+            break;
+        case 'myproposals':
+            include 'myproposals.php';
             break;
         case 'account':
             include 'account.php';
