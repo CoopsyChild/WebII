@@ -21,9 +21,9 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
     }
     if($loggedIn == false && $userExists == false){
         echo 'Nincs ilyen nevű felhasználó: '.$_POST['username'].', kérem regisztráljon.';
-        echo "<a href='forms/reg_form.php'>here</a>";
+        echo "<a href='../forms/reg_form.php'> itt </a>";
         echo " vissza a bejelentkezéshez ";
-        echo "<a href='forms/login_form.php'>here</a>";
+        echo "<a href='../forms/login_form.php'> itt</a>";
     }
     else if($loggedIn){
        session_start();
