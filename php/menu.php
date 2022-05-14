@@ -14,7 +14,7 @@
             <a href='index.php?page=offers'>Munkakeresés </a>
         </div>
         <div id="header-elements-left">
-            <a href='index.php?page=account'><img src='../profilepics/<?php echo $user['profilepic'] ?>' alt='Profilkép' width='40' height='40'> <?php echo $user['username'] ?></a>
+            <a href='index.php?page=account'><img src='../profilepics/<?php echo $user['profilepic'] ?>' alt='Profilkép' width='50' height='50'> <?php echo $user['username'] ?></a>
         </div>
     </div>
 
@@ -34,7 +34,7 @@
             <a href='index.php?page=offers'>Szabadúszók </a>
         </div>
         <div id="header-elements-left">
-            <a href='index.php?page=account'><img src='../profilepics/<?php echo $user['profilepic'] ?>' alt='Profilkép' width='40' height='40'> <?php echo $user['username'] ?></a>
+            <a href='index.php?page=account'><img src='../profilepics/<?php echo $user['profilepic'] ?>' alt='Profilkép' width='50' height='50'> <?php echo $user['username'] ?></a>
         </div>
     </div>
 <?php endif; ?>

@@ -249,6 +249,10 @@ content h1 {
     padding-right: 35%;
 }
 
+.btn-group {
+    column-count: 2;
+}
+
 .register-btn {
     border-radius: 15px;
     padding: 5px;
@@ -278,6 +282,13 @@ content h1 {
     margin-top: 30px;
 }
 
+.register-btn.sitebtn {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 160px;
+    padding: 0px;
+}
+
 .register-btn.check {
     margin-top: 15px;
     margin-bottom: 5px;
@@ -300,8 +311,8 @@ content h1 {
 
 .profilepic {
     border-radius: 50% !important;
-    height: 50px !important;
-    width: 50px !important;
+    height: 40px !important;
+    width: 40px !important;
 }
 
 .profile-cover {
@@ -316,6 +327,11 @@ content h1 {
     background-position: center;
     width: 100%;
     height: 300px;
+}
+
+.explorebg {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(45deg, #f1f1f1d3, #f3f3f3c5);
 }
 
 .profile-cover-content {
@@ -682,21 +698,42 @@ content h1 {
     background-color: rgba(0, 0, 0, 0);
 }
 
+.plus {
+    object-fit: fill !important;
+    opacity: 0.7;
+    box-shadow: none !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px !important;
+    height: 250px !important;
+}
+
 .explore-photos img {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     width: 100%;
-    height: auto;
+    height: 250px;
+    object-fit: cover;
+    object-position: 0% 0;
+}
+
+.desc {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 #post-image {
     text-align: justify;
-    cursor: pointer;
     transition: 0.5s;
+    height: 460px;
+    padding: 10px;
 }
 
-#post-image:hover {
+#post-image img:hover {
     opacity: 0.8;
+    cursor: pointer;
 }
 
 .modal {

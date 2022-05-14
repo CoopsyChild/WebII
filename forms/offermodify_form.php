@@ -26,5 +26,5 @@ $offer=$result->fetch_assoc();
     </textarea><br><br>
     <input hidden type="text" name="jobid" value="<?php echo $jobid; ?>">
     <input type="submit" value="Adatok módosítása">
-    <a href="/php/index.php?page=myoffers">Vissza</a><br>
+    <a href="../php/index.php?page=myoffers">Vissza</a><br>
 </form>

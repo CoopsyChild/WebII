@@ -25,8 +25,7 @@ if (isset($_POST['searchbtn']) && !empty($_POST['parameter']) && !empty($_POST['
 
 $result = $mysqli->query($query);
 $offers = $result->fetch_all(MYSQLI_ASSOC);
-?>
-<div class="explore-content">
+?><div class="explore-content">
     <form action="" method="POST">
         <label>Keresés</label>
         <select name="params">
@@ -49,6 +48,7 @@ $offers = $result->fetch_all(MYSQLI_ASSOC);
     </form>
     <div class="explore-photos">
         <?php foreach ($offers as $offer) : ?>
+            <div class="explorebg">
             <div id="post-image">
                 <form action="" method="POST">
                     <img src="../profilepics/<?php echo $offer['img'] ?>" alt="kép" width="150" height="100"><br>
@@ -56,7 +56,7 @@ $offers = $result->fetch_all(MYSQLI_ASSOC);
                     <strong><?php $result = $mysqli->query("SELECT topic FROM topics WHERE id='" . $offer['topic'] . "'");
                             $row = $result->fetch_assoc();
                             echo $row['topic']; ?></strong>
-                    <p><?php echo $offer['description']; ?></p>
+                    <p class="desc"><?php echo $offer['description']; ?></p>
                     <p><img src="../profilepics/<?php $result = $mysqli->query("SELECT profilepic FROM users WHERE id='" . $offer['owner'] . "'");
                                                 $row = $result->fetch_assoc();
                                                 echo $row['profilepic']; ?>" class="profilepic" alt="kép" width="25" height="25">
@@ -65,12 +65,15 @@ $offers = $result->fetch_all(MYSQLI_ASSOC);
                         echo $row['username']; ?></p>
                     <input hidden type="text" name="jobid" value="<?php echo $offer['id']; ?>">
                     <input hidden type="text" name="userid" value="<?php echo $offer['owner']; ?>">
+                    <center>
                     <?php if ($seeking == "freelancer") : ?>
-                        <input type="submit" name="hire" value="Felvesz">
+                        <input type="submit"  class="register-btn sitebtn" name="hire" value="Felvesz">
                     <?php else : ?>
-                        <input type="submit" name="hire" value="Jelentkezes">
+                        <input type="submit"  class="register-btn sitebtn" name="hire" value="Jelentkezes">
                     <?php endif; ?>
+                    </center>
                 </form>
+            </div>
             </div>
         <?php endforeach; ?>
     </div>
@@ -86,5 +89,7 @@ if (isset($_POST['hire'])) {
         $query = "INSERT INTO contracts(employer,employee,jobid) VALUES(" . $_POST['userid'] . "," . $_SESSION['id'] . "," . $_POST['jobid'] . ")";
     }
     $mysqli->query($query);
-    header('Location: index.php?page=offers');
+    echo '<script>
+    location.replace("index.php?page=offers")
+    </script>';
 } ?>
