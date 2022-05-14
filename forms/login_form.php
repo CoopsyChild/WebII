@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
+
 <body>
     <form method="post" action="../php/login.php">
-        Felhasznalónév: 
+        Felhasznalónév:
         <input type="text" name="username" required><br>
 
         Jelszó:
@@ -15,4 +17,5 @@
     </form>
     <a href="../forms/reg_form.php">Regisztráció</a>
 </body>
+
 </html>

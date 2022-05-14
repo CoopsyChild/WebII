@@ -42,6 +42,3 @@ else
 {
     echo "Hiányzó felhasználónév vagy jelszó!";
 }
-
-
-?>

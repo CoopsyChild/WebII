@@ -14,4 +14,3 @@ elseif($_SESSION['authority']=='client'){
     echo"<a href='index.php?page=account'><img src='../profilepics/".$user['profilepic']."'"." alt='Profilkép' width='40' height='40'></a>";
     echo "<a href='../php/logout.php'> Kijelentkezés </a>";
 }
-?>

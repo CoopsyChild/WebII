@@ -7,4 +7,3 @@ function connect($username, $password, $dbname)
         }
     else return $connection;
 }
-?>

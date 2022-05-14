@@ -26,8 +26,10 @@
         case 'newoffer_form':
             include '../forms/newoffer_form.php';
             break;
+        case 'offermodify_form':
+            include '../forms/offermodify_form.php';
+            break;
         case 'accountupdate_form':
             include '../forms/accountupdate_form.php';
             break;
     }
-?>

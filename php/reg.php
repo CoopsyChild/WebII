@@ -33,6 +33,3 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
 else{
     echo 'Töltsön ki minden kötelező adatot';
 }
-
-
-?>

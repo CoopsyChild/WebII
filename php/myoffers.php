@@ -5,12 +5,12 @@ if ($_SESSION['authority'] == 'client') {
 } else {
     $seeking = 'client';
 }
-$result = $mysqli->query("SELECT offers.id,offers.title,offers.img,offers.description,offers.topic,offers.owner FROM offers WHERE offers.owner='".$_SESSION['id']."'");
+$result = $mysqli->query("SELECT offers.id,offers.title,offers.img,offers.description,offers.topic,offers.owner FROM offers WHERE offers.owner='" . $_SESSION['id'] . "'");
 $offers = $result->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
-<a href="index.php?page=newoffer_form">Adatok módosítása</a><br>
+<a href="index.php?page=newoffer_form">Hozzáadás</a><br>
 
 <?php foreach ($offers as $offer) : ?>
     <div class="content">
@@ -26,5 +26,23 @@ $offers = $result->fetch_all(MYSQLI_ASSOC);
             <?php $result = $mysqli->query("SELECT username FROM users WHERE id='" . $offer['owner'] . "'");
             $row = $result->fetch_assoc();
             echo $row['username']; ?></p>
+        <form action="" method="POST">
+            <input hidden type="text" name="jobid" value="<?php echo $offer['id']; ?>">
+            <input type="submit" name="takedown" value="Levetel">
+        </form>
+        <form action="../php/index.php?page=offermodify_form" method="post">
+            <input hidden type="text" name="jobid" value="<?php echo $offer['id']; ?>">
+            <input type="submit" name="modify" value="Módosítás">
+        </form>
     </div><br>
 <?php endforeach; ?>
+
+<?php
+
+if (isset($_POST['takedown'])) {
+    $query = "DELETE FROM offers WHERE id=" . $_POST['jobid'] . ";";
+    $mysqli->query($query);
+    header('Location: index.php?page=myoffers');
+}
+
+?>

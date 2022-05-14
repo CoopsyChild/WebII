@@ -51,40 +51,39 @@ $offers = $result->fetch_all(MYSQLI_ASSOC);
 <?php foreach ($offers as $offer) : ?>
     <div class="content">
         <form action="" method="POST">
-        <img src="../profilepics/<?php echo $offer['img'] ?>" alt="kép" width="150" height="100"><br>
-        <h2><?php echo $offer['title']; ?></h2>
-        <strong><?php $result = $mysqli->query("SELECT topic FROM topics WHERE id='" . $offer['topic'] . "'");
+            <img src="../profilepics/<?php echo $offer['img'] ?>" alt="kép" width="150" height="100"><br>
+            <h2><?php echo $offer['title']; ?></h2>
+            <strong><?php $result = $mysqli->query("SELECT topic FROM topics WHERE id='" . $offer['topic'] . "'");
+                    $row = $result->fetch_assoc();
+                    echo $row['topic']; ?></strong>
+            <p><?php echo $offer['description']; ?></p>
+            <p><img src="../profilepics/<?php $result = $mysqli->query("SELECT profilepic FROM users WHERE id='" . $offer['owner'] . "'");
+                                        $row = $result->fetch_assoc();
+                                        echo $row['profilepic']; ?>" alt="kép" width="25" height="25">
+                <?php $result = $mysqli->query("SELECT username FROM users WHERE id='" . $offer['owner'] . "'");
                 $row = $result->fetch_assoc();
-                echo $row['topic']; ?></strong>
-        <p><?php echo $offer['description']; ?></p>
-        <p><img src="../profilepics/<?php $result = $mysqli->query("SELECT profilepic FROM users WHERE id='" . $offer['owner'] . "'");
-                                    $row = $result->fetch_assoc();
-                                    echo $row['profilepic']; ?>" alt="kép" width="25" height="25">
-            <?php $result = $mysqli->query("SELECT username FROM users WHERE id='" . $offer['owner'] . "'");
-            $row = $result->fetch_assoc();
-            echo $row['username']; ?></p>
+                echo $row['username']; ?></p>
             <input hidden type="text" name="jobid" value="<?php echo $offer['id']; ?>">
             <input hidden type="text" name="userid" value="<?php echo $offer['owner']; ?>">
-            <?php if($seeking=="freelancer"): ?>
-            <input type="submit" name="hire" value="Felvesz">
-            <?php else: ?>
-            <input type="submit" name="hire" value="Jelentkezes">
+            <?php if ($seeking == "freelancer") : ?>
+                <input type="submit" name="hire" value="Felvesz">
+            <?php else : ?>
+                <input type="submit" name="hire" value="Jelentkezes">
             <?php endif; ?>
         </form>
     </div><br>
 <?php endforeach; ?>
 
-<?php 
-    
-    if (isset($_POST['hire'])){
-    if($seeking=='freelancer'){
-        $query="INSERT INTO contracts(employer,employee,jobid) VALUES(".$_SESSION['id'].",".$_POST['userid'].",".$_POST['jobid'].")";
-    }
-    else{
-        $query="UPDATE offers SET taken=1 WHERE id=".$_POST['jobid'].";";
+<?php
+
+if (isset($_POST['hire'])) {
+    if ($seeking == 'freelancer') {
+        $query = "INSERT INTO contracts(employer,employee,jobid) VALUES(" . $_SESSION['id'] . "," . $_POST['userid'] . "," . $_POST['jobid'] . ")";
+    } else {
+        $query = "UPDATE offers SET taken=1 WHERE id=" . $_POST['jobid'] . ";";
         $mysqli->query($query);
-        $query="INSERT INTO contracts(employer,employee,jobid) VALUES(".$_POST['userid'].",".$_SESSION['id'].",".$_POST['jobid'].")";
+        $query = "INSERT INTO contracts(employer,employee,jobid) VALUES(" . $_POST['userid'] . "," . $_SESSION['id'] . "," . $_POST['jobid'] . ")";
     }
     $mysqli->query($query);
     header('Location: index.php?page=offers');
-}?>
+} ?>

@@ -1,50 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Regisztráció</title>
+    <link type="text/css" rel="stylesheet" href="../forms/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <form method="POST" action="../php/reg.php">
-        Felhasznalónév: 
-        <input type="text" name="username" required pattern="[A-Z a-z 0-9]*"><br>
+    <div class="container-fluid">
+        <div id="register">
+            <form method="POST" action="../php/reg.php">
+                <center>
+                    <h2>Új fiók létrehozása</h2>
+                </center>
 
-        Jelszó:
-        <input type="password" name="password" required ><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="registerUsername">Felhasználónév</label><br>
+                        <input type="text" class="input-style" id="registerUsername" name="username" required pattern="[A-Z a-z 0-9]*">
+                    </div>
+                </div>
 
-        Email:
-        <input type="email" name="email" required><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="registerPassword" class="">Jelszó</label><br>
+                        <input type="password" class="input-style" id="registerPassword" name="password" required>
+                    </div>
 
-        Vezetéknév:
-        <input type="text" name="lastname" required"><br>
+                    <div class="form-group">
+                        <label for="registerEmail">E-mail cím</label><br>
+                        <input type="email" class="input-style" id="registerEmail" name="email" required>
+                    </div>
+                </div>
 
-        Keresztnév:
-        <input type="text" name="firstname" required"><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="registerLastname">Vezetéknév</label><br>
+                        <input type="text" class="input-style" id="registerLastname" name="lastname" required>
+                    </div>
+                </div>
 
-        <input type="radio" name="authoritytype" value="client" id="clientrbtn">
-        Kliens vagyok, munkát szeretnék hirdetni:
-        <input type="radio" name="authoritytype" value="freelancer" id="freelancerrbtn">
-        Szabadúszó vagyok, dolgozni szeretnék:<br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="registerFirstname">Keresztnév</label><br>
+                        <input type="text" class="input-style" id="registerFirstname" name="firstname" required>
+                    </div>
+                </div>
 
-        Profilkép:
-        <input type="file" name="profilepic"><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="radio" class="input-style" name="authoritytype" value="client" id="clientrbtn">
+                    </div>
+                </div>
 
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="rbtn" for="clientrbtn">Munkát szeretnék hirdetni: </label>
+                        <input type="radio" name="authoritytype" value="client" id="clientrbtn">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="rbtn" for="freelancerrbtn">Szabadúszó vagyok, dolgozni szeretnék: </label>
+                        <input type="radio" name="authoritytype" value="freelancer" id="freelancerrbtn">
+                    </div>
+                </div>
 
+                <!-- <center>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="profilepicbtn">Profilkép:</label><br>
+                            <input type="file" id="profilepicbtn" name="profilepic"><br>
+                        </div>
+                    </div>
+                </center>
 
-        CAPTCHA:
-        <span name="captchatest" id="captcha"></span>
-        <input type="text" id="capthcainput" name="capthcainput" required><br>
-        <input type="button" id="captchabtn" value="CAPTCHA Ellenörzés">
-        <input type="button" value="Frissítés"><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="captcha">Captcha:</label><br>
+                        <span name="captchatest" id="captcha"></span><br>
+                        <input type="text" id="capthcainput" class="input-style" name="capthcainput" required><br>
+                        <center><input type="button" class="register-btn" id="captchabtn" value="Ellenörzés"><br></center>
+                    </div>
+                </div> -->
 
-        <span id="result"></span><br>
+                <center><button type="submit" class="register-btn" id="submitBtn" name="signup" disabled>Regisztráció</button></center>
+                <span id="result"></span>
+            </form>
 
+        </div>
 
-        <input type="submit" name="signup" id="submitBtn" value="Regisztráció" disabled>
-
-
-    </form>
-
+    </div>
     <script src="captchascript.js"></script>
 </body>
+
 </html>
