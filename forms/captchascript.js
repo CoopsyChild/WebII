@@ -1,12 +1,10 @@
-let captchaTest = document.querySelector("#captcha");
 let userInput = document.querySelector("#capthcainput");
-let result = document.querySelector("#result");
-let refresh = document.querySelector("#refresh");
 let captchaBtn = document.querySelector("#captchabtn");
-let username = document.querySelector("#username");
-let password = document.querySelector("#password");
-let email = document.querySelector("#email");
-let file = document.querySelector("#profilepic");
+let captchaText = document.querySelector('#captcha');
+var ctx = captchaText.getContext("2d");
+ctx.font = "60px Oxygen";
+ctx.fillStyle = "#1c1d1f";
+
 
 let capthcaAbc = [
     "A",
@@ -79,16 +77,14 @@ for (let index = 0; index < 7; index++) {
         capthcaAbc[Math.floor(Math.random() * capthcaAbc.length)]
     );
 }
-let capthcaText = capthcaTextArray.join("");
+let capthcaTest = capthcaTextArray.join("");
 
-captchaTest.innerHTML = capthcaText;
+ctx.fillText(capthcaTest, 0, captchaText.height / 1.5, captchaText.width);
+
 
 captchaBtn.addEventListener("click", function() {
-    if (capthcaText === userInput.value) {
-        result.innerHTML = "Jó válasz :)";
+    if (capthcaTest === userInput.value) {
         document.getElementById("submitBtn").disabled = false;
-    } else {
-        result.innerHTML = "Rossz válasz :(";
     }
 });
 

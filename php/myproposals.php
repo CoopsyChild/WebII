@@ -14,9 +14,10 @@ if ($_SESSION['authority'] == 'client') {
 $result = $mysqli->query($query);
 $offers = $result->fetch_all(MYSQLI_ASSOC);
 ?>
-
+<div class="explore-content">
+<div class="explore-photos">
 <?php foreach ($offers as $offer) : ?>
-    <div class="content">
+    <div class="post-image">
         <form action="" method="POST">
             <img src="../profilepics/<?php echo $offer['img'] ?>" alt="kép" width="150" height="100"><br>
             <h2><?php echo $offer['title']; ?></h2>
@@ -32,7 +33,7 @@ $offers = $result->fetch_all(MYSQLI_ASSOC);
                 <?php endif; ?>
                 <img src="../profilepics/<?php $result = $mysqli->query("SELECT profilepic FROM users WHERE id='" . $offer[$arraykey] . "'");
                                             $row = $result->fetch_assoc();
-                                            echo $row['profilepic']; ?>" alt="kép" width="25" height="25">
+                                            echo $row['profilepic']; ?>" class="profilepic" alt="kép" width="25" height="25">
                 <?php $result = $mysqli->query("SELECT username FROM users WHERE id='" . $offer[$arraykey] . "'");
                 $row = $result->fetch_assoc();
                 echo $row['username']; ?>
@@ -48,7 +49,8 @@ $offers = $result->fetch_all(MYSQLI_ASSOC);
         </form>
     </div><br>
 <?php endforeach; ?>
-
+</div>
+</div>
 <?php
 
 if (isset($_POST['done'])) {

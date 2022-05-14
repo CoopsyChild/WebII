@@ -57,12 +57,6 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <input type="radio" class="input-style" name="authoritytype" value="client" id="clientrbtn">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
                         <label class="rbtn" for="clientrbtn">Munkát szeretnék hirdetni: </label>
                         <input type="radio" name="authoritytype" value="client" id="clientrbtn">
                     </div>
@@ -74,26 +68,24 @@
                     </div>
                 </div>
 
-                <!-- <center>
+                <center>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="profilepicbtn">Profilkép:</label><br>
-                            <input type="file" id="profilepicbtn" name="profilepic"><br>
+                            <label class="register-btn input" for="profilepicbtn">Profilkép feltöltése</label><br>
+                            <input type="file" class="input-file" id="profilepicbtn" name="profilepic"><br>
                         </div>
                     </div>
                 </center>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="captcha">Captcha:</label><br>
-                        <span name="captchatest" id="captcha"></span><br>
+                    <center><div class="captcha-bg"><canvas name="captchatest" class="captcha" id="captcha"></canvas></div></center>
                         <input type="text" id="capthcainput" class="input-style" name="capthcainput" required><br>
-                        <center><input type="button" class="register-btn" id="captchabtn" value="Ellenörzés"><br></center>
+                        <center><input type="button" class="register-btn check" id="captchabtn" value="Ellenörzés"><br></center>
                     </div>
-                </div> -->
+                </div>
 
                 <center><button type="submit" class="register-btn" id="submitBtn" name="signup" disabled>Regisztráció</button></center>
-                <span id="result"></span>
             </form>
 
         </div>

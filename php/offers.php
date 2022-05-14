@@ -26,54 +26,55 @@ if (isset($_POST['searchbtn']) && !empty($_POST['parameter']) && !empty($_POST['
 $result = $mysqli->query($query);
 $offers = $result->fetch_all(MYSQLI_ASSOC);
 ?>
-
-<form action="" method="POST">
-    <label>Keresés</label>
-    <select name="params">
-        <option value="username">Felhasználó</option>
-        <option value="title">Cím</option>
-        <option value="description">Leírás</option>
-    </select>
-    <label>alapján </label>
-    <input type="search" name="parameter" id="">
-    <input type="submit" name="searchbtn" value="kereses">
-    <label>Szűrés téma alapján: </label>
-    <select name="filters">
-        <?php $result = $mysqli->query("SELECT topic FROM topics");
-        $rows = $result->fetch_all(MYSQLI_ASSOC); ?>
-        <?php foreach ($rows as $row) : ?>
-            <option value="<?php echo $row['topic']; ?>"><?php echo $row['topic']; ?></option>
+<div class="explore-content">
+    <form action="" method="POST">
+        <label>Keresés</label>
+        <select name="params">
+            <option value="username">Felhasználó</option>
+            <option value="title">Cím</option>
+            <option value="description">Leírás</option>
+        </select>
+        <label>alapján </label>
+        <input type="search" name="parameter" id="">
+        <input type="submit" name="searchbtn" value="kereses">
+        <label>Szűrés téma alapján: </label>
+        <select name="filters">
+            <?php $result = $mysqli->query("SELECT topic FROM topics");
+            $rows = $result->fetch_all(MYSQLI_ASSOC); ?>
+            <?php foreach ($rows as $row) : ?>
+                <option value="<?php echo $row['topic']; ?>"><?php echo $row['topic']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <input type="submit" name="filter" value="szűrés">
+    </form>
+    <div class="explore-photos">
+        <?php foreach ($offers as $offer) : ?>
+            <div id="post-image">
+                <form action="" method="POST">
+                    <img src="../profilepics/<?php echo $offer['img'] ?>" alt="kép" width="150" height="100"><br>
+                    <h2><?php echo $offer['title']; ?></h2>
+                    <strong><?php $result = $mysqli->query("SELECT topic FROM topics WHERE id='" . $offer['topic'] . "'");
+                            $row = $result->fetch_assoc();
+                            echo $row['topic']; ?></strong>
+                    <p><?php echo $offer['description']; ?></p>
+                    <p><img src="../profilepics/<?php $result = $mysqli->query("SELECT profilepic FROM users WHERE id='" . $offer['owner'] . "'");
+                                                $row = $result->fetch_assoc();
+                                                echo $row['profilepic']; ?>" class="profilepic" alt="kép" width="25" height="25">
+                        <?php $result = $mysqli->query("SELECT username FROM users WHERE id='" . $offer['owner'] . "'");
+                        $row = $result->fetch_assoc();
+                        echo $row['username']; ?></p>
+                    <input hidden type="text" name="jobid" value="<?php echo $offer['id']; ?>">
+                    <input hidden type="text" name="userid" value="<?php echo $offer['owner']; ?>">
+                    <?php if ($seeking == "freelancer") : ?>
+                        <input type="submit" name="hire" value="Felvesz">
+                    <?php else : ?>
+                        <input type="submit" name="hire" value="Jelentkezes">
+                    <?php endif; ?>
+                </form>
+            </div>
         <?php endforeach; ?>
-    </select>
-    <input type="submit" name="filter" value="szűrés">
-</form>
-
-<?php foreach ($offers as $offer) : ?>
-    <div class="content">
-        <form action="" method="POST">
-            <img src="../profilepics/<?php echo $offer['img'] ?>" alt="kép" width="150" height="100"><br>
-            <h2><?php echo $offer['title']; ?></h2>
-            <strong><?php $result = $mysqli->query("SELECT topic FROM topics WHERE id='" . $offer['topic'] . "'");
-                    $row = $result->fetch_assoc();
-                    echo $row['topic']; ?></strong>
-            <p><?php echo $offer['description']; ?></p>
-            <p><img src="../profilepics/<?php $result = $mysqli->query("SELECT profilepic FROM users WHERE id='" . $offer['owner'] . "'");
-                                        $row = $result->fetch_assoc();
-                                        echo $row['profilepic']; ?>" alt="kép" width="25" height="25">
-                <?php $result = $mysqli->query("SELECT username FROM users WHERE id='" . $offer['owner'] . "'");
-                $row = $result->fetch_assoc();
-                echo $row['username']; ?></p>
-            <input hidden type="text" name="jobid" value="<?php echo $offer['id']; ?>">
-            <input hidden type="text" name="userid" value="<?php echo $offer['owner']; ?>">
-            <?php if ($seeking == "freelancer") : ?>
-                <input type="submit" name="hire" value="Felvesz">
-            <?php else : ?>
-                <input type="submit" name="hire" value="Jelentkezes">
-            <?php endif; ?>
-        </form>
-    </div><br>
-<?php endforeach; ?>
-
+    </div>
+</div>
 <?php
 
 if (isset($_POST['hire'])) {

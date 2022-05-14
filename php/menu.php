@@ -1,16 +1,40 @@
-<?php
+<?php if ($_SESSION['authority'] == 'freelancer') : ?>
 
-if($_SESSION['authority']=='freelancer'){
-    echo"<a href='index.php?page=offers'>Munkakeresés </a>";
-    echo"<a href='index.php?page=myoffers'>Ajánlataim </a>";
-    echo"<a href='index.php?page=myproposals'>Munkáim </a>";
-    echo"<a href='index.php?page=account'><img src='../profilepics/".$user['profilepic']."'"." alt='Profilkép' width='40' height='40'></a>";
-    echo "<a href='../php/logout.php'> Kijelentkezés </a>";
-}
-elseif($_SESSION['authority']=='client'){
-    echo"<a href='index.php?page=offers'>Szabadúszók</a>";
-    echo"<a href='index.php?page=myoffers'>Hirdetéseim </a>";
-    echo"<a href='index.php?page=myproposals'>Kiadott munkák </a>";
-    echo"<a href='index.php?page=account'><img src='../profilepics/".$user['profilepic']."'"." alt='Profilkép' width='40' height='40'></a>";
-    echo "<a href='../php/logout.php'> Kijelentkezés </a>";
-}
+    <div id="header-elements">
+    <div id="header-elements-right">
+            <a href='../php/logout.php'> Kijelentkezés </a>
+        </div>
+        <div id="header-elements-right">
+            <a href='index.php?page=myproposals'>Munkáim </a>
+        </div>
+        <div id="header-elements-right">
+            <a href='index.php?page=myoffers'>Ajánlataim </a>
+        </div>
+        <div id="header-elements-right">
+            <a href='index.php?page=offers'>Munkakeresés </a>
+        </div>
+        <div id="header-elements-left">
+            <a href='index.php?page=account'><img src='../profilepics/<?php echo $user['profilepic'] ?>' alt='Profilkép' width='40' height='40'> <?php echo $user['username'] ?></a>
+        </div>
+    </div>
+
+<?php elseif ($_SESSION['authority'] == 'client') : ?>
+
+    <div id="header-elements">
+    <div id="header-elements-right">
+            <a href='../php/logout.php'> Kijelentkezés </a>
+        </div>
+        <div id="header-elements-right">
+            <a href='index.php?page=myproposals'>Kiadott munkák </a>
+        </div>
+        <div id="header-elements-right">
+            <a href='index.php?page=myoffers'>Hirdetéseim </a>
+        </div>
+        <div id="header-elements-right">
+            <a href='index.php?page=offers'>Szabadúszók </a>
+        </div>
+        <div id="header-elements-left">
+            <a href='index.php?page=account'><img src='../profilepics/<?php echo $user['profilepic'] ?>' alt='Profilkép' width='40' height='40'> <?php echo $user['username'] ?></a>
+        </div>
+    </div>
+<?php endif; ?>
